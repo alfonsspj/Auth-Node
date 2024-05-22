@@ -86,3 +86,23 @@ En el lado derecho debe salir 200 OK con un array vacío porque no se ha creado 
 
 Final de la clase: ⌛️
   Para matar el proceso del run dev, en la terminal presionamos las teclas: CTRL + C
+
+
+
+## clase 4
+Nodemon sí puede escuchar a cambios en el archivo .env. Les comparto una configuración para lograr esto:
+
+Archivo nodemon.json
+
+````js
+{
+  "watch": [
+    ".env",
+    "src"
+  ],
+  "ext": "js",
+  "ignore": [
+    "src/**/*.test.ts"
+  ],
+  "exec": "node -r dotenv/config ./src/index"
+}
