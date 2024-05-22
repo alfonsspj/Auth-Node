@@ -23,6 +23,9 @@ const options = {
 }
 app.use(cors(options));
 
+// habilitar estrategia local -- ejecuta el archivo de passport
+require('./utils/auth');
+
 app.get('/', (req, res) => {
   res.send('Hola mi server en express');
 });
