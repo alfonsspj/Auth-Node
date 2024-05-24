@@ -103,3 +103,5 @@ https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/
 Al implementar JWT ya no es necesario enviar los datos del usuario en la petición, ya que por medio del payload del token podemos enviarla, ademas recordar que por ningún motivo se debe enviar informacion sensible del usuario.
 
 8. instalación de passport-jwt `npm i passport-jwt`
+9. Gestión de roles: 
+10. libreria access control `npm i accesscontrol` para gestionar permisos de forma explicita. Mas avanzado
