@@ -23,6 +23,7 @@ function checkAdminRole( req, res, next ) {
 
 
 // clousures
+//@param roles array de roles que pueden acceder a la ruta
 function checkRoles( ...roles ) { // que roles vamos a permitir que entren al endpoint
     // retorno un middleware
     return (req, res, next) => {

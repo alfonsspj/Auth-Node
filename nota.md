@@ -105,3 +105,4 @@ Al implementar JWT ya no es necesario enviar los datos del usuario en la petici�
 8. instalación de passport-jwt `npm i passport-jwt`
 9. Gestión de roles: 
 10. libreria access control `npm i accesscontrol` para gestionar permisos de forma explicita. Mas avanzado
+11. Obteniendo ordenes del perfil ( manejar el sub del jwt) a partir de la sesion del token: 
