@@ -37,32 +37,43 @@ class AuthService {
         };
     };
 
-    async sendMail(email) {
+    async sendRecovery(email) {
         const user = await service.findByEmail(email);
         if (!user) {
             throw boom.unauthorized();
         }
+        const payload = { sub: user.id };
+        const token = jwt.sign(payload, config.jwtSecret, { expiresIn: '15min' });
+        //? enviar al frontend
+        const link = `http://myfrontend.com/recovery?token=${token}`;
+        await service.update(user.id, {recoveryToken: token});
 
+        const mail = {
+            from: config.smtpEmail,
+            to: `${user.email}`,
+            // to: 'bibliotecaspj@gmail.com',
+            subject: "Email para recuperar contraseña",
+            html: `<b>Ingresa a este link => ${link}</b>`,
+        }
+
+        const rta = await this.sendMail(mail);
+        return rta;
+    }
+
+    async sendMail(infoMail) {
         // servidor para el envio de correo
         const transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
             secure: true,
             port: 465,
             auth: {
-                user: 'alfonsspj@gmail.com',
-                pass: 'rmonaywzvmhnjbus'
+                user: config.smtpEmail,
+                pass: config.smtpPassword
             }
         });
 
-        await transporter.sendMail({
-            from: 'alfonsspj@gmail.com',
-            to: `${user.email}`,
-            subject: "correo de prueba",
-            text: "Hola, este es un mensaje de prueba",
-            html: "<b>Hola, este es un mensaje de prueba</b>",
-        });
-
-        return { message: 'mail sent'};
+        await transporter.sendMail(infoMail);
+        return { message: 'mail sent' };
     }
 
 

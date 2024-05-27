@@ -199,3 +199,10 @@ Validar permisos: Al tener el token se puede validar permisos e indicarle al bac
     https://ethereal.email/ cuenta fake
 
 18. NodeApp rmon aywz vmhn jbus --- usando el servidor smtp de gmail
+19. Tutorial actual de configurar contraseña de aplicación
+
+https://support.google.com/accounts/answer/185833?hl=es
+
+20. También podemos usar mailtrap para checar nuestros correos en nodemailer
+
+https://mailtrap.io/
